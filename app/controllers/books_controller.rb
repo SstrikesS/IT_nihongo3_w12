@@ -19,7 +19,9 @@ class BooksController < ApplicationController
   # GET /books/1/edit
   def edit
   end
-
+  def book_params
+    book_params.require(:book).permit(:title, :number_of_pages, :detail ,:image)
+  end
   # POST /books or /books.json
   def create
     @book = Book.new(book_params)
@@ -66,6 +68,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title, :number_of_pages, :image)
+      params.require(:book).permit(:title, :number_of_pages, :detail, :image)
     end
 end
